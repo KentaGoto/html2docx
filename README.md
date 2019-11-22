@@ -24,4 +24,4 @@ Enter to exit.
 ## REQUIRES
 
 - Windows
-- Word
+- Word 32bit
