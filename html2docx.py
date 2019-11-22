@@ -38,23 +38,30 @@ if __name__ == '__main__':
 
     print('Processing...')
 
+    # First remove all except html
     for i in all_files(root_dir_copy):
         dirname = os.path.dirname(i)
         current_file = os.path.basename(i)
         fname, ext = os.path.splitext(current_file)
+        # Delete non-htm(l) files
+        if ext == '.htm' or ext == '.html':
+            print('Processing target: ' + i)
+        else:
+            os.remove(i)
 
+    # Process html after unnecessary files are gone
+    for i in all_files(root_dir_copy):
+        dirname = os.path.dirname(i)
+        current_file = os.path.basename(i)
+        fname, ext = os.path.splitext(current_file)
         if ext == '.htm' or ext == '.html':
             try:
                 # Convert htm(l) to Doc(x)
                 html2docx(dirname + '/' + current_file, word)
+                # Delete htm(l)
+                os.remove(i)
             except:
                 print('Error: ' + i)
-
-            # Delete htm(l) files
-            os.remove(dirname + '/' + current_file)
-        else:
-            # Delete non-Doc(x) files
-            os.remove(i)
 
     word.Quit()
 
