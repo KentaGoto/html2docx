@@ -25,3 +25,6 @@ Enter to exit.
 
 - Windows
 - Word 32bit
+
+## License
+MIT
